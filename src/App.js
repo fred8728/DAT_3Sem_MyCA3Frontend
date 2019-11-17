@@ -45,7 +45,7 @@ function App(props) {
               <NavLink to="/films">Film API</NavLink>
             </li>
             <li>
-              <NavLink to="/species">Species API</NavLink>
+              <NavLink to="/vehicles">Vehicle API</NavLink>
             </li>
           </ul>
           <Switch swi={Switch} />

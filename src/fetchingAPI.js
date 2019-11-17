@@ -4,12 +4,12 @@ BrowserRouter as Router,
 Route,
 Switch} from "react-router-dom";
 
-const Switches = (props) => {
+const Switches = () => {
     const [starwars,setStarwars] = useState();
     const [planet, setPlanet] = useState();
     const [film, setFilm] = useState();
     const [starship, setStarship] = useState();
-    const [species, setSpecies] = useState();
+    const [vehicles, setVehicles] = useState();
 
     function fetchStarwarz() {
     fetch('http://localhost:8080/securitystarter/api/info/person/6')
@@ -35,10 +35,10 @@ const Switches = (props) => {
     .then(data=> setStarship( data )); 
     }
 
-    function fetchSpecies(){
-      fetch('http://localhost:8080/securitystarter/api/info/species/1')
+    function fetchVehicles(){
+      fetch('http://localhost:8080/securitystarter/api/info/vehicles/2')
     .then(response=>response.json())
-    .then(data=> setSpecies( data )); 
+    .then(data=> setVehicles( data )); 
     }
 
     useEffect(() => {
@@ -46,13 +46,14 @@ const Switches = (props) => {
         fetchStarwarz();
         fetchPlanet();
         fetchStarship();
-        fetchSpecies();
+        fetchVehicles();
         fetchFilm();
       }, []);
 
     return (
     <Switch>
       <Route path="/starwars">
+      <pre>Starwarz API: {JSON.stringify(starwars)}</pre>
       </Route>
       <Route path="/planet">
       <pre>Planet API: {JSON.stringify(planet)}</pre>
@@ -61,7 +62,7 @@ const Switches = (props) => {
       <pre>Starship API: {JSON.stringify(starship)}</pre>
       </Route>
       <Route path= "/vehicles">
-      <pre>Species API: {JSON.stringify(species)}</pre>
+      <pre>Vehicle API: {JSON.stringify(vehicles)}</pre>
       </Route>
       <Route path= "/films">
         <pre>Film API: {JSON.stringify(film)}</pre>
